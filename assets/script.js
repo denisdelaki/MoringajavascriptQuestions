@@ -110,3 +110,4 @@ function Results() {
     "&{numberOfCorrectChoices} out of &{ExamQuestions.length}";
 }
 Questions();
+ExamsSubmit.addEventListener("click", Results);

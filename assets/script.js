@@ -66,15 +66,34 @@ function Questions() {
     //declare a variable to store the list of the choices for each question
     const choices = [];
     // add the radio button to each question to ease selection of answers
+    for (letter in CurrentQuestion.choices) {
+      // now push the radio buttons into the choices
+      choices.push(
+        '<label> <input type="radio" name="radio&{questionNumber}" value="&{letter}"> &{currentQuestion.choices[letter]} </label>'
+      );
+    }
+    //now push the questions and the choices to the output constainer 
+    HTMLoutput.push(
+      '<div class="question"> &{currentQuestion.question} </div> <div class="choices"> &{choices.join("")} <div>');
+
   });
+  //now join the HTML output  content and the  to one page
+  ExamsQuestionsContainer.innerHTML = HTMLoutput.join('');
 }
-/*
-function Questions() {
-  var Questionscontainer = ExamsQuestionsContainer.querySelectorAll(".choices");
-    let correctselection = 0;
-    ExamQuestions.forEach((currentQuestion, questionNumber) => {
-        
-       
-   })
+//declare a  function to show results 
+function Results() {
+  //put together all the selected choices in the questions  into one variable
+  const answers = ExamsResultsContainer.querySelectorAll('.choices');
+  //count the selected choices
+  let numberOfCorrectChoices = 0;
+  //then find the selected answers in each question and add to the number of correct choices
+  ExamQuestions.forEach((CurrentQuestion, questionNumber) => {
+    //now find the selected choice in each question and store the answer in the variable
+    const selectedanswer = answers[questionNumber];
+    //the selected answer
+    const selected ='input[name=question&{questionNumber}]: checked'
+  })
+  
 }
-*/
+
+ 

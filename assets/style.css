@@ -1,0 +1,38 @@
+.body {
+  position: absolute;
+  top: 25%;
+  justify-content: center;
+  background-color: #add8e6;
+  height: 50%;
+  width: 50%;
+  padding: 100px;
+  margin-right: 20%;
+  margin-left: 20%;
+  font-size: 25px;
+  
+}
+h1,h3,p{
+    color: violet;
+}
+#StartButton {
+  padding: 10px 25px 10px 25px;
+  background-color: #e5e5e5;
+  border: none;
+  font-size: 30px;
+  border-top-right-radius: 30px;
+}
+#StartButton:hover {
+  background-color: #e6add0;
+  cursor: pointer;
+}
+.submit {
+  border: none;
+  background-color: blueviolet;
+  font-size: 20px;
+  padding: 10px 25px;
+  margin: 2rem;
+}
+.submit:hover {
+  background-color: red;
+  cursor: pointer;
+}

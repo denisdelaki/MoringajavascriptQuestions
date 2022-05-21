@@ -72,18 +72,18 @@ function Questions() {
         '<label> <input type="radio" name="radio&{questionNumber}" value="&{letter}"> &{currentQuestion.choices[letter]} </label>'
       );
     }
-    //now push the questions and the choices to the output constainer 
+    //now push the questions and the choices to the output constainer
     HTMLoutput.push(
-      '<div class="question"> &{currentQuestion.question} </div> <div class="choices"> &{choices.join("")} <div>');
-
+      '<div class="question"> &{currentQuestion.question} </div> <div class="choices"> &{choices.join("")} <div>'
+    );
   });
   //now join the HTML output  content and the  to one page
-  ExamsQuestionsContainer.innerHTML = HTMLoutput.join('');
+  ExamsQuestionsContainer.innerHTML = HTMLoutput.join("");
 }
-//declare a  function to show results 
+//declare a  function to show results
 function Results() {
   //put together all the selected choices in the questions  into one variable
-  const answers = ExamsResultsContainer.querySelectorAll('.choices');
+  const answers = ExamsResultsContainer.querySelectorAll(".choices");
   //count the selected choices
   let numberOfCorrectChoices = 0;
   //then find the selected answers in each question and add to the number of correct choices
@@ -91,10 +91,22 @@ function Results() {
     //now find the selected choice in each question and store the answer in the variable
     const selectedanswer = answers[questionNumber];
     //the selected answer
-    const selected = 'input[name=question&{questionNumber}]: checked';
+    const selected = "input[name=question&{questionNumber}]: checked";
     // store the selected answer
     const userselection = (selectedanswer.querySelector(selected) || {}).value;
     // add the number of correct selection if the selected choice is correct
-
-
- 
+    if (userselection === currentQuestion.correctchoice) {
+      //then add the number of correct choices
+      numberOfCorrectChoices++;
+      //depict the answes using a different color
+      answers[questionNumber].style.color = "blue";
+      //retain the  number of correct answers if the selected choice is wrong
+    } else {
+      //color the wrong choice selection with a red color
+      answers[questionNumber].style.color = "red";
+    }
+  });
+  ExamsResultsContainer.innerHTML =
+    "&{numberOfCorrectChoices} out of &{ExamQuestions.length}";
+}
+Questions();

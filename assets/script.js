@@ -91,9 +91,10 @@ function Results() {
     //now find the selected choice in each question and store the answer in the variable
     const selectedanswer = answers[questionNumber];
     //the selected answer
-    const selected ='input[name=question&{questionNumber}]: checked'
-  })
-  
-}
+    const selected = 'input[name=question&{questionNumber}]: checked';
+    // store the selected answer
+    const userselection = (selectedanswer.querySelector(selected) || {}).value;
+    // add the number of correct selection if the selected choice is correct
+
 
  
